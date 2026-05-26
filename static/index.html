@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LectureMind AI — Умный конспект</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎓 LectureMind AI</h1>
+            <p>Превратите любой текст в структурированный конспект с тестом</p>
+            <button id="themeToggle" class="theme-btn" title="Переключить тему">🌙</button>
+        </div>
+        
+        <div class="card">
+            <div class="stats-bar" id="statsBar" style="display: none;">
+                <span id="statChars">0 символов</span> • 
+                <span id="statTime">~0 сек обработка</span> • 
+                <span id="statSaved">экономия ~5 мин</span>
+            </div>
+
+            <div class="form-group">
+                <label for="subject">📚 Дисциплина</label>
+                <select id="subject">
+                    <option value="Общая дисциплина">Общая дисциплина</option>
+                    <option value="Математика">Математика</option>
+                    <option value="Физика">Физика</option>
+                    <option value="Биология">Биология</option>
+                    <option value="Химия">Химия</option>
+                    <option value="История">История</option>
+                    <option value="Литература">Литература</option>
+                    <option value="Программирование">Программирование</option>
+                    <option value="Экономика">Экономика</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>📝 Учебный материал</label>
+                <div class="textarea-wrapper">
+                    <textarea id="text" placeholder="Вставьте текст или нажмите 🎙️ для голосового ввода..."></textarea>
+                    <button id="micBtn" class="mic-btn" title="Голосовой ввод">🎙️</button>
+                </div>
+            </div>
+            
+            <button id="processBtn">🚀 Сгенерировать конспект</button>
+            
+            <div class="loader" id="loader">
+                <div class="spinner"></div>
+                <p>ИИ анализирует материал...</p>
+            </div>
+            
+            <div class="error" id="error"></div>
+        </div>
+
+        <div class="card history-card" id="historyCard" style="display: none;">
+            <div class="history-header">
+                <h3>💾 История запросов</h3>
+                <button id="clearHistory" class="small-btn">Очистить</button>
+            </div>
+            <div id="historyList" class="history-list"></div>
+        </div>
+        
+        <div class="card result" id="result">
+            <div class="result-header">
+                <h2>✅ Результат обработки</h2>
+                <div class="result-actions">
+                    <button id="toggleCards" class="action-btn" style="display: none;">🃏 Карточки</button>
+                    <button id="exportPdf" class="action-btn pdf-btn" style="display: none;">📄 PDF</button>
+                </div>
+            </div>
+            
+            <div class="section" id="conceptsSection">
+                <h3>📖 Ключевые понятия</h3>
+                <div id="concepts"></div>
+            </div>
+            
+            <div class="section" id="linksSection">
+                <h3>🔗 Логические связи</h3>
+                <div id="links"></div>
+            </div>
+            
+            <div class="section" id="quizSection">
+                <h3>❓ Проверьте себя</h3>
+                <div id="quiz"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="/static/app.js"></script>
+</body>
+</html>
